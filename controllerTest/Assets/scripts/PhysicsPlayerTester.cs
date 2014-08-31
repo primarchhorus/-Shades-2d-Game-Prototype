@@ -19,14 +19,7 @@ public class PhysicsPlayerTester : MonoBehaviour
 	private Animator _animator;
 	private RaycastHit2D _lastControllerColliderHit;
 	private Vector3 _velocity;
-	private scroll _scrollerClouds;
-	private scroll _scrollerMountBack;
-	private scroll _scrollerMountMed;
-	private scroll _scrollerTreeBack;
-	private scroll _scrollerPlayerLevel;
-	private scroll _scrollerRockFore;
-	private scroll _scrollerPlatFore;
-	private scroll _scrollerTreeFore;
+
 
 
 	// input
