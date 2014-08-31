@@ -1,0 +1,92 @@
+fileFormatVersion: 2
+guid: 72526429d4f4b034ca3ac349352958a8
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Hero_JumpSprite
+    21300002: Hero_JumpSprite_0
+    21300004: Hero_JumpSprite_1
+    21300006: Hero_JumpSprite_2
+    21300008: Hero_JumpSprite_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Hero_JumpSprite_0
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 52
+        width: 277
+        height: 579
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Hero_JumpSprite_1
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 54
+        width: 222
+        height: 613
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Hero_JumpSprite_2
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 47
+        width: 318
+        height: 619
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Hero_JumpSprite_3
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 189
+        width: 385
+        height: 483
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
