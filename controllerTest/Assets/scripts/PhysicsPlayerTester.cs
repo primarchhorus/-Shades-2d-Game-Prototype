@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//Potential for attack collision, is to create a polygon collider for each frame and enable and disable the collider objects as the frames go through the attack animation.
 
 public class PhysicsPlayerTester : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PhysicsPlayerTester : MonoBehaviour
 	public float runSpeed = 8f;
 	public float groundDamping = 20f; // how fast do we change direction? higher means faster
 	public float inAirDamping = 5f;
-	public float jumpHeight = 3f;
+	public float jumpHeight = 3.5f;
 	public float scrollSpeed;
 
 	[HideInInspector]
@@ -48,7 +49,7 @@ public class PhysicsPlayerTester : MonoBehaviour
 	void onControllerCollider( RaycastHit2D hit )
 	{
 		// logs any collider hits if uncommented. it gets noisy so it is commented out for the demo
-		//Debug.Log( "flags: " + _controller.collisionState + ", hit.normal: " + hit.normal );
+		Debug.Log( "flags: " + _controller.collisionState + ", hit.normal: " + hit.normal );
 	}
 
 
@@ -74,7 +75,7 @@ public class PhysicsPlayerTester : MonoBehaviour
 		_up = _up || Input.GetKeyDown( KeyCode.UpArrow );
 		_right = Input.GetKey( KeyCode.RightArrow );
 		_left = Input.GetKey( KeyCode.LeftArrow );
-		_dash = Input.GetKeyDown(KeyCode.LeftShift);
+		_dash = _dash || Input.GetKeyDown(KeyCode.LeftShift);
 
 
 	}
@@ -90,14 +91,13 @@ public class PhysicsPlayerTester : MonoBehaviour
 		
 		if( _right )
 		{
+			normalizedHorizontalSpeed = 1;
+
 			if(_dash && _right)
 			{
 				normalizedHorizontalSpeed = 50;
 			}
-			else
-			{
-				normalizedHorizontalSpeed = 1;
-			}
+
 			if( transform.localScale.x < 0f )
 				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
 
@@ -157,6 +157,7 @@ public class PhysicsPlayerTester : MonoBehaviour
 
 		// reset input
 		_up = false;
+		_dash = false;
 	}
 
 }
