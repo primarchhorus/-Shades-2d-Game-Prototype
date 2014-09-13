@@ -127,9 +127,18 @@ public class PhysicsPlayerTester : MonoBehaviour
 				_animator.Play( Animator.StringToHash( "Hero_Walk" ) );
 		}
 
-		else if(_attack)
+		else if (_attack || _attackTrigger)
 		{
 			_animator.Play( Animator.StringToHash( "Hero_Attack01" ));
+
+			if (this._animator.GetCurrentAnimatorStateInfo(0).IsName("Hero_Attack01"))
+			{
+				_attackTrigger = true;
+			}
+			else if(!(this._animator.GetCurrentAnimatorStateInfo(0).IsName("Hero_Attack01")))
+			{
+				_attackTrigger = false;
+			}
 		}
 
 		else
