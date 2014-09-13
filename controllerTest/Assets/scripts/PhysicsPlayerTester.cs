@@ -20,6 +20,7 @@ public class PhysicsPlayerTester : MonoBehaviour
 	private Animator _animator;
 	private RaycastHit2D _lastControllerColliderHit;
 	private Vector3 _velocity;
+	private bool _attackTrigger;
 
 
 
@@ -28,6 +29,8 @@ public class PhysicsPlayerTester : MonoBehaviour
 	private bool _left;
 	private bool _up;
 	private bool _dash;
+	private bool _attack;
+
 
 
 
@@ -76,6 +79,7 @@ public class PhysicsPlayerTester : MonoBehaviour
 		_right = Input.GetKey( KeyCode.RightArrow );
 		_left = Input.GetKey( KeyCode.LeftArrow );
 		_dash = _dash || Input.GetKeyDown(KeyCode.LeftShift);
+		_attack = _attack || Input.GetKey (KeyCode.LeftControl);
 
 
 	}
@@ -93,7 +97,7 @@ public class PhysicsPlayerTester : MonoBehaviour
 		{
 			normalizedHorizontalSpeed = 1;
 
-			if(_dash && _right)
+			if(_dash && _right && !(_controller.isGrounded))
 			{
 				normalizedHorizontalSpeed = 50;
 			}
@@ -101,14 +105,13 @@ public class PhysicsPlayerTester : MonoBehaviour
 			if( transform.localScale.x < 0f )
 				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
 
-//			scrollBackgroundParrallaxRight();
 			
 			if( _controller.isGrounded )
 				_animator.Play( Animator.StringToHash( "Hero_Walk" ) );
 		}
 		else if( _left )
 		{
-			if(_dash && _left)
+			if(_dash && _left && !(_controller.isGrounded))
 			{
 				normalizedHorizontalSpeed = -50;
 			}
@@ -119,10 +122,14 @@ public class PhysicsPlayerTester : MonoBehaviour
 			if( transform.localScale.x > 0f )
 				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
 
-			//_scrollerClouds.scrollParrallaxLeft ();
 
 			if( _controller.isGrounded )
 				_animator.Play( Animator.StringToHash( "Hero_Walk" ) );
+		}
+
+		else if(_attack)
+		{
+			_animator.Play( Animator.StringToHash( "Hero_Attack01" ));
 		}
 
 		else
@@ -149,7 +156,8 @@ public class PhysicsPlayerTester : MonoBehaviour
 		// apply horizontal speed smoothing it
 		var smoothedMovementFactor = _controller.isGrounded ? groundDamping : inAirDamping; // how fast do we change direction?
 		_velocity.x = Mathf.Lerp( _velocity.x, normalizedHorizontalSpeed * runSpeed, Time.fixedDeltaTime * smoothedMovementFactor );
-		
+
+
 		// apply gravity before moving
 		_velocity.y += gravity * Time.fixedDeltaTime;
 
@@ -158,6 +166,7 @@ public class PhysicsPlayerTester : MonoBehaviour
 		// reset input
 		_up = false;
 		_dash = false;
+		_attack = false;
 	}
 
 }
